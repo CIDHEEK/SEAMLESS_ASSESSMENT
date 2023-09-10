@@ -12,6 +12,10 @@ class Employee{
     get NickEmployee () {
         return cy.get(':nth-child(1) > .oxd-grid-3 > .oxd-grid-item > .oxd-input-group > :nth-child(2) > .oxd-input')
     }
+
+    get SaveEditEmployee () {
+       return cy.get(':nth-child(1) > .oxd-form > .oxd-form-actions > .oxd-button')
+    }
 }
 
 const employee = new Employee();

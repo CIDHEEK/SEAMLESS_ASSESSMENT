@@ -7,7 +7,7 @@ import login from "../../pages/loginpage"
 
 describe('Employee', function() {
 
-    it('Create Employee', function() {
+    it('Create an Employee', function() {
       cy.visit(Cypress.env('ORANGEHRMURL'))  
        login.username.type('Admin')   
        login.password.type('admin123')

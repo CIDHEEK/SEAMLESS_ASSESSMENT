@@ -1,11 +1,12 @@
 /// <reference types="cypress"/>
 
+import admin from "../../pages/adminpage"
 import login from "../../pages/loginpage"
 import sidemenu from "../../pages/SideMenu"
 
-describe('test_name', function() {
+describe('Admin', function() {
 
-   it('what_it_does', function() {
+   it('Delete an Admin', function() {
    
    cy.visit(Cypress.env('ORANGEHRMURL'))
       cy.title().should('eq', 'OrangeHRM', 'OPEN SOURCE HR MANAGEMENT')
@@ -15,14 +16,19 @@ describe('test_name', function() {
       cy.url().should('eq','https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
    sidemenu.Admin.click(),
       cy.url().should('eq', 'https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers')
-      cy.get(':nth-child(2) > .oxd-input').type('adekanbi')
-   cy.get('.oxd-form-actions > .oxd-button--secondary').click()
-   cy.contains('Adekanbi')
-cy.get('.oxd-table-cell-actions > :nth-child(1) > .oxd-icon').click({force:true})
-      cy.get('.orangehrm-horizontal-padding > div > .oxd-button').click({force:true})
-      cy.get('.orangehrm-modal-footer > .oxd-button--label-danger').click()
-      cy.get('body > #app > #oxd-toaster_1 > .oxd-toast')
-         
+      admin.EditUsername.type('adekanbi')
+   admin.EditSearch.click({force:true})
+      cy.contains('adekanbi')
+      admin.EditSearch.click({force:true})
+      cy.get('.oxd-button--label-danger').click()
+      cy.get('.oxd-toast')
+
+// Confirming the deleted admin is not on the list 
+      admin.EditUsername.type('adekanbi')
+      admin.EditSearch.click({force:true})
+      cy.get('.oxd-toast')
+
+
          })
         
         })
