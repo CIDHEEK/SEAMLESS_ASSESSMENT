@@ -11,17 +11,19 @@ describe('Admin', function() {
    
    cy.visit(Cypress.env('ORANGEHRMURL'))
       cy.title().should('eq', 'OrangeHRM', 'OPEN SOURCE HR MANAGEMENT')
-      login.username.type('Admin')
-      login.password .type('admin123')
-      cy.get('.oxd-button').click()
+      login.username
+      login.password
+      login.loginbutton
       cy.url().should('eq','https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
-   sidemenu.Admin.click(),
+   
+   sidemenu.Admin
       cy.url().should('eq', 'https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers')
-      admin.EditUsername.type('adekanbi')
-   admin.EditSearch.click({force:true})
+      admin.EditUsername
+   
+   admin.EditSearch
       cy.contains('adekanbi')
-      employee.DeleteEmployee.click()
-      cy.get('.oxd-button--label-danger').click()
+      employee.DeleteEmployee
+      admin.confirmDelete
       cy.get('.oxd-toast')
 
 // Confirming the deleted admin is not on the list 

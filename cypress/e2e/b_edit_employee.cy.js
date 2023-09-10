@@ -11,19 +11,23 @@ describe('Employee', function() {
 
     it('Edit an Employee', function() {
         cy.visit(Cypress.env('ORANGEHRMURL'))
-            login.username.type('Admin')
-            login.password.type('admin123')
-            cy.get('.oxd-button').click()    
+            login.username
+            login.password
+            login.loginbutton   
             cy.url().should('eq','https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
-        Sidemenu.PIM.click()
+        
+        Sidemenu.PIM
             cy.url().should('eq', 'https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList')
-        employee.EmployeeName.type('sodiq')
+        
+        employee.EmployeeName
             cy.wait(2000).get('.oxd-autocomplete-dropdown').click()
             admin.EditSearch.click({force:true})
             cy.contains('SODIQ')
-        employee.EditEmployee.click()
-            employee.NickEmployee.clear().type('agbaawo shelby')
-            employee.SaveEditEmployee.click()
-            cy.get('.oxd-toast')
+        
+        employee.EditEmployee
+            employee.NickEmployee
+            employee.SaveEditEmployee
+        
+        cy.get('.oxd-toast')
     })
 })
