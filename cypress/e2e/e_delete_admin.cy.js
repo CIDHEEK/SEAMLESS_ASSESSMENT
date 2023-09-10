@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 import admin from "../../pages/adminpage"
+import employee from "../../pages/employeepage"
 import login from "../../pages/loginpage"
 import sidemenu from "../../pages/SideMenu"
 
@@ -19,12 +20,12 @@ describe('Admin', function() {
       admin.EditUsername.type('adekanbi')
    admin.EditSearch.click({force:true})
       cy.contains('adekanbi')
-      admin.EditSearch.click({force:true})
+      employee.DeleteEmployee.click()
       cy.get('.oxd-button--label-danger').click()
       cy.get('.oxd-toast')
 
 // Confirming the deleted admin is not on the list 
-      admin.EditUsername.type('adekanbi')
+      admin.EditUsername.clear().type('adekanbi')
       admin.EditSearch.click({force:true})
       cy.get('.oxd-toast')
 
